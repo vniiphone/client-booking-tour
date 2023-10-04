@@ -1,0 +1,56 @@
+.wrapper {
+    padding: 24px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 280px;
+
+   
+}
+
+.sub-total {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    width: 100%;
+    text-align: center;
+}
+
+.link {
+    text-align: center;
+}
+
+.item-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.item-img {
+    width: 68px;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+}
+
+.item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.item-delete {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        color: var(--primary-1);
+    }
+}

@@ -1,0 +1,25 @@
+.wrapper {
+    height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    font-family: Poppins;
+}
+
+.check {
+    font-size: 7rem;
+    color: #32caae;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 2.25em;
+    color: #32caae;
+}
+
+.sub {
+    font-size: 1rem;
+    color: #b1b2b8;
+}

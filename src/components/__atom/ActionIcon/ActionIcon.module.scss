@@ -1,0 +1,33 @@
+.wrapper {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: 4px;
+    transition: 200ms ease-in-out;
+
+    &.edit {
+        color: rgb(241, 156, 52);
+
+        &:hover {
+            background-color: rgb(241, 156, 52);
+            color: var(--white);
+        }
+    }
+
+    &.delete {
+        color: rgb(216, 49, 59);
+
+        &:hover {
+            background-color: rgb(216, 49, 59);
+            color: var(--white);
+        }
+    }
+
+    .icon{
+        font-size: 1.15rem;
+    }
+
+}

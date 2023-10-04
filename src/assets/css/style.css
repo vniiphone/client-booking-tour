@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700;900&display=swap');
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+:root {
+    --primary-1: rgb(50, 123, 249);
+    --primary-2: rgb(255, 224, 0);
+    --white: rgb(255, 255, 255);
+    --text-light: #777;
+    --black: rgb(48, 48, 48);
+    --border-color: #e9e7e7;
+    --background: rgb(248, 250, 251);
+
+
+    --header-height: 100px;
+    --admin-header-height: 64px;
+    --sidebar-width: 280px;
+    --padding-block: 40px;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: Roboto;
+}
+
+ol, ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+a:hover {
+    color: unset;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-align-center {
+    align-items: center;
+}
+
+.gap-3 {
+    gap: 12px;
+}
+
+.mt-4 {
+    margin-top: 16px;
+}
+
+.mb-4 {
+    margin-bottom: 16px
+}
+
+.flex-align-center {
+    align-items: center
+}
+
+/* Field error */
+.field-error {
+    font-size: 13px;
+    color: #eb3d4e;
+    margin-top: 4px;
+}
+
+/* Form group */
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.form-label {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-error {
+    font-size: 14px;
+    color: #fb4557;
+    height: 16px;
+}
+
+/* Admin content */
+.admin-content {
+    margin-left: var(--sidebar-width);
+    background-color: var(--background);
+    padding: 24px;
+    min-height: calc(100vh - var(--admin-header-height));
+    margin-top: var(--admin-header-height);
+}

@@ -1,0 +1,14 @@
+.link {
+    display: block;
+    width: 100%;
+    padding: 3px 0;
+    color: var(--text-light);
+
+    &:hover {
+        color: var(--primary-1);
+    }
+
+    +.link{
+        margin-top: 10px;
+    }
+}

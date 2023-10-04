@@ -1,0 +1,50 @@
+.wrapper {
+    padding-top: 12px;
+}
+
+.heading {
+    margin-top: 12px;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: Poppins;
+    text-align: center;
+}
+
+.filter {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.sort {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    >span {
+        min-width: 80px;
+    }
+}
+
+.grid {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grid-icon {
+    font-size: 1.3rem;
+    color: #999;
+    cursor: pointer;
+
+    &.active {
+        color: var(--black);
+    }
+}
+
+.list {
+    padding-block: var(--padding-block);
+}
