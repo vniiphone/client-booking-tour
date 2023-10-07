@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { getProducts } from '../../../services'
+import { getTours } from '../../../services'
 
 import Item from '../../../components/__combined/ProductItem'
 import Product from '../../../model/tour'
@@ -13,7 +13,7 @@ const cl = classNames.bind(styles)
 
 function List() {
     const productsQuery = useQuery(['user-products'], () =>
-        getProducts({ page: 0 })
+    getTours({ page: 0 })
     )
     return (
         <div className='grid wide'>
@@ -33,7 +33,7 @@ function List() {
                         ))
                     )}
                 </div>
-                <Button className={cl('see')} to='/product' type='outline'>
+                <Button className={cl('see')} to='/tour' type='outline'>
                     SEE ALL
                 </Button>
             </div>

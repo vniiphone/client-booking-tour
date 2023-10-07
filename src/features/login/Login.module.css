@@ -1,0 +1,50 @@
+.wrapper {
+  padding-block: 40px;
+}
+
+.heading {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 400;
+  color: #191919;
+}
+
+.container {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(50%, 1fr));
+  gap: 20px;
+}
+
+.form {
+  flex: 1;
+  border: 1px solid var(--border-color);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-heading {
+  font-size: 20px;
+  font-weight: 400;
+  color: --black;
+}
+
+.text {
+  color: var(--text-light);
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}/*# sourceMappingURL=Login.module.css.map */

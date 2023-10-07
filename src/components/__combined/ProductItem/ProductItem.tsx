@@ -13,13 +13,20 @@ const cl = classNames.bind(styles)
 interface Props {
     id: number
     name: string
+    tomTat: string
     giaThamKhao: number
-    imageUrls: Array<string>
-    category: any
     soLuongVe: number
+    ngayGioXuatPhat: string
+    ngayVe: string
+    noiKhoiHanh: string
+    visible: boolean
+    loaiTour_id: number
+    imageUrls: Array<string>
+    imagePublicId: string
+    loaiTour: {}
 }
 
-function ProductItem({ id, name, giaThamKhao, imageUrls, category, soLuongVe }: Props) {
+function ProductItem({ id, name, giaThamKhao, imageUrls, soLuongVe }: Props) {
     const queryClient = useQueryClient()
     const navigate = useNavigate()
     const user = useAppSelector((state) => state.auth)
@@ -56,14 +63,23 @@ function ProductItem({ id, name, giaThamKhao, imageUrls, category, soLuongVe }: 
             />
             <div className={cl('item-info')}>
                 <div className={cl('item-name')}>{name}</div>
-                <div className={cl('item-price')}>{giaThamKhao} VND</div>
+                <div className={cl('item-price')}>
+                    {giaThamKhao.toLocaleString(
+                        'vi-VN',
+                        {
+                            style: 'currency',
+                            currency: 'VND',
+                            minimumFractionDigits: 0,
+                        }
+                    )}
+                </div>
                 <Button
                     onClick={handleAddToCart}
                     className={cl('item-add')}
                     type='primary'
                     disabled={soLuongVe === 0}
                 >
-                    Add to cart
+                    Thêm vào Yêu Thích
                 </Button>
             </div>
             {/* <div className={cl('category')}>{category.name}</div> */}

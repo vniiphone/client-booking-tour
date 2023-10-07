@@ -1,0 +1,14 @@
+.wrapper {
+  position: fixed;
+  height: 100vh;
+  top: var(--admin-header-height);
+  left: 0;
+  z-index: 1;
+  width: var(--sidebar-width);
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.item {
+  width: 100%;
+}/*# sourceMappingURL=Sidebar.module.css.map */

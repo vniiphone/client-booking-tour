@@ -100,7 +100,7 @@ function Header() {
                             </div>
                             <div className={cl('nav-item')}>
                                 <NavLink
-                                    to='/product'
+                                    to='/tour'
                                     className={(state) =>
                                         cl({
                                             active: state.isActive,
@@ -112,8 +112,8 @@ function Header() {
 
                                 <div className={cl('nav-item-extend')}>
                                     <LinkItem
-                                        to='/product'
-                                        title='All products'
+                                        to='/tour'
+                                        title='All Tours'
                                     />
                                 </div>
                             </div>
@@ -133,7 +133,7 @@ function Header() {
                     </div>
                 </div>
                 <Search
-                    products={searchQuery?.data || []}
+                    tours={searchQuery?.data || []}
                     value={searchValue}
                     onChange={setSearchValue}
                     onClose={() => setSearchVisible(false)}

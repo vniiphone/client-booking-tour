@@ -8,7 +8,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import ImgCrop from 'antd-img-crop'
 import * as Yup from 'yup'
 
-import { getProductById } from '../../../services'
+import { getTourById } from '../../../services'
 import Button from '../../../components/__atom/Button'
 import productPlaceholder from '../../../assets/img/components/product_placeholder.png'
 import { getPrerequisites } from '../services'
@@ -43,7 +43,7 @@ function FormComp({ edit, handleSubmit }: Props) {
     const [loading, setLoading] = useState(false)
 
     const { id } = useParams()
-    const productQuery = useQuery(['product'], () => getProductById({ id }), {
+    const productQuery = useQuery(['product'], () => getTourById({ id }), {
         enabled: !!id,
     })
 
@@ -314,7 +314,7 @@ function FormComp({ edit, handleSubmit }: Props) {
                     </div>
 
                     <div className='d-flex mt-4 flex-align-center gap-3'>
-                        <Button to='/admin/product/list' type='outline'>
+                        <Button to='/admin/tour/list' type='outline'>
                             BACK
                         </Button>
                         <Button loading={loading}>

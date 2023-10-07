@@ -6,8 +6,8 @@ import { faBorderAll, faTableCells } from '@fortawesome/free-solid-svg-icons'
 import { useQuery } from '@tanstack/react-query'
 
 import Item from '../../components/__combined/ProductItem'
-import { getProducts } from '../../services'
-import Product from '../../model/tour'
+import { getTours } from '../../services/tourService'
+import Tour from '../../model/tour'
 
 import classNames from 'classnames/bind'
 import styles from './List.module.scss'
@@ -18,8 +18,8 @@ function List() {
     const [gridValue, setGridValue] = useState([3, 4, 6])
     const [filter, setFilter] = useState({ page: 0, sortBy: '' })
 
-    const productsQuery = useQuery(['products', filter], () =>
-        getProducts(filter)
+    const toursQuery = useQuery(['tours', filter], () =>
+    getTours(filter)
     )
 
     const onFetchNewData = (page: number) => {
@@ -34,22 +34,22 @@ function List() {
         <div className={cl('wrapper')}>
             <Breadcrumb>
                 <Breadcrumb.Item>
-                    <Link to='/'>Home</Link>
+                    <Link to='/'>Trang Chủ</Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                    <Link to='/product'>Product</Link>
+                    <Link to='/tour'>Chuyến ĐI</Link>
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div className={cl('heading')}>
-                Products ({productsQuery?.data?.totalElements || 0})
+                Tours ({toursQuery?.data?.totalElements || 0})
             </div>
             <div className={cl('filter')}>
                 <div className={cl('sort')}>
                     <span> SORT BY:</span>
                     <Select value={filter.sortBy} onChange={handleChangeOrder}>
-                        <Select.Option value={''}>Default</Select.Option>
-                        <Select.Option value='price'>Price</Select.Option>
-                        <Select.Option value='name'>Name</Select.Option>
+                        <Select.Option value={''}>Mặc địnhh</Select.Option>
+                        <Select.Option value='price'>Giá</Select.Option>
+                        <Select.Option value='name'>Tên</Select.Option>
                     </Select>
                 </div>
                 <div className={cl('grid')}>
@@ -71,10 +71,10 @@ function List() {
             </div>
             <div className={cl('list')}>
                 <div className='row'>
-                    {productsQuery.isLoading ? (
+                    {toursQuery.isLoading ? (
                         <Spin />
                     ) : (
-                        productsQuery.data.content.map((x: Product) => (
+                        toursQuery.data.content.map((x: Tour) => (
                             <div
                                 key={x.id}
                                 className={`col l-${gridValue[0]} m-${gridValue[1]} c-${gridValue[2]}`}
@@ -85,10 +85,10 @@ function List() {
                             </div>
                         ))
                     )}
-                    {productsQuery?.data && (
+                    {toursQuery?.data && (
                         <Pagination
-                            page={productsQuery.data.number}
-                            pages={productsQuery.data.totalPages}
+                            page={toursQuery.data.number}
+                            pages={toursQuery.data.totalPages}
                             offset={2}
                             onFetchNewData={onFetchNewData}
                         ></Pagination>

@@ -1,8 +1,8 @@
-import Product from './tour'
+import Tour from './tour'
 
 export default interface CartItem {
     id: number
-    product: Product
+    tour: Tour
     quantity: number
     status: boolean
 }

@@ -1,4 +1,4 @@
-export default interface Product {
+export default interface Tour {
     id: number
     name: string
     tomTat: string

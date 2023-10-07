@@ -39,7 +39,7 @@ function MiniCart() {
                     {formatCurrency(
                         cartQuery?.data?.reduce(
                             (acc: number, item: CartItem) =>
-                                (acc += item.quantity * item.product.price),
+                                (acc += item.quantity * item.tour.giaThamKhao),
                             0
                         )
                     )}

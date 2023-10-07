@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.label {
+  font-weight: 500;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.name {
+  flex: 2;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  text-align: center;
+}
+
+.price {
+  color: var(--primary-1);
+  font-weight: 400;
+  font-size: 16px;
+}/*# sourceMappingURL=Order.module.css.map */

@@ -2,13 +2,13 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { message } from 'antd'
 import React from 'react'
-import { editProduct } from './services'
+import { editTour } from './services'
 
 import Wrapper from '../../components/__atom/FormWrapper'
 import Form from './components/Form'
 
 function EditProduct() {
-    const editProductMutation = useMutation(editProduct, {
+    const editProductMutation = useMutation(editTour, {
         onSuccess: (data) => {
             if (data.status === 201) {
                 message.success('Product updated')
@@ -18,8 +18,8 @@ function EditProduct() {
     })
     return (
         <Wrapper
-            title='Edit product'
-            description='Change product specifications'
+            title='Edit Tour'
+            description='Chỉnh sửa thông tin tour'
         >
             <Form edit handleSubmit={editProductMutation}></Form>
         </Wrapper>

@@ -3,5 +3,6 @@ export default interface DiemDen {
     name:string
    diaChi:string
   noiDung: string
+  giaVeThamQuan : number
   lichTrinhTour_id: number
 }

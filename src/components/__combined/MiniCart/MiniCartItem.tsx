@@ -12,7 +12,7 @@ import { message } from 'antd'
 import formatCurrency from '../../../utils/formatCurrency'
 const cl = classNames.bind(styles)
 
-function MiniCartItem({ id, product, quantity }: CartItem) {
+function MiniCartItem({ id, tour, quantity }: CartItem) {
     const queryClient = useQueryClient()
     const deleteCartItemMutation = useMutation(deleteCartItem, {
         onSuccess: (data) => {
@@ -27,19 +27,19 @@ function MiniCartItem({ id, product, quantity }: CartItem) {
         deleteCartItemMutation.mutate({ cart_id: id })
     }
     return (
-        <Link to={`/product/${product.id}`} className={cl('item-wrapper')}>
+        <Link to={`/tour/${tour.id}`} className={cl('item-wrapper')}>
             <img
                 src={
-                    product?.imageUrl ||
+                    tour?.imageUrls[0] ||
                     'https://wokiee.jamstacktemplates.dev/assets/images/product/product-03.jpg'
                 }
                 alt='product'
                 className={cl('item-img')}
             />
             <div className={cl('item-info')}>
-                <div>{product.name}</div>
+                <div>{tour.name}</div>
                 <div>
-                    {quantity} x {formatCurrency(product.price)}
+                    {quantity} x {formatCurrency(tour.giaThamKhao)}
                 </div>
             </div>
             <div onClick={(e) => handleDelete(e)} className={cl('item-delete')}>

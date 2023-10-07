@@ -2,14 +2,14 @@ import { Image, Table } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import { useQuery, useMutation } from '@tanstack/react-query'
 import dayjs from 'dayjs'
-import FormatMoney from "format-money-js"
 import Button from '../../components/__atom/Button'
 import Wrapper from '../../components/__atom/FormWrapper'
 import { Edit, Delete } from '../../components/__atom/ActionIcon'
+
 import productPlaceholder from '../../assets/img/components/product_placeholder.png'
 
 import { deleteProduct } from './services'
-import { getProducts } from '../../services'
+import { getTours } from '../../services'
 import Pagination from '../../components/__layout/Pagination'
 import { useState } from 'react'
 
@@ -40,13 +40,13 @@ function ListProduct() {
         decimals: 2
       });
     const [page, setPage] = useState(0)
-    const productsQuery = useQuery(['admin-products', page], () =>
-        getProducts({ page })
+    const tourQuery = useQuery(['admin-products', page], () =>
+    getTours({ page })
     )
     const deleteProductMuatation = useMutation(deleteProduct, {
         onSuccess: (data) => {
             console.log(data)
-            productsQuery.refetch()
+            tourQuery.refetch()
         },
     })
 
@@ -88,9 +88,11 @@ function ListProduct() {
             dataIndex: 'giaThamKhao',
             key: 'giaThamKhao',
             render: (text) => {
-                // Chuyển đổi timestamp thành kiểu DateTime và định dạng
-                const money = fm.from(text, { symbol: 'VND' });
-                return money;
+                {return text.toLocaleString("vi-VN", {
+                    style: "currency",
+                    currency: "VND",
+                    minimumFractionDigits: 0,
+                })}
               },
         },
         {
@@ -144,9 +146,9 @@ function ListProduct() {
         },
     ]
 
-    const data: DataType[] = productsQuery.isLoading
+    const data: DataType[] = tourQuery.isLoading
         ? []
-        : productsQuery.data.content.map((x: DataType) => ({
+        : tourQuery.data.content.map((x: DataType) => ({
               ...x,
               key: x.id,
           }))
@@ -155,21 +157,21 @@ function ListProduct() {
         <Wrapper title='Products' description={`Manage all products`}>
             <Button
                 type='primary'
-                to='/admin/product/create'
+                to='/admin/tour/create'
                 className='mt-4 mb-4'
             >
                 Add new product
             </Button>
             <Table
                 columns={columns}
-                loading={productsQuery.isLoading}
+                loading={tourQuery.isLoading}
                 dataSource={data}
                 pagination={false}
             />
-            {productsQuery?.data && (
+            {tourQuery?.data && (
                 <Pagination
-                    page={productsQuery.data.number}
-                    pages={productsQuery.data.totalPages}
+                    page={tourQuery.data.number}
+                    pages={tourQuery.data.totalPages}
                     offset={2}
                     onFetchNewData={onFetchNewData}
                 ></Pagination>

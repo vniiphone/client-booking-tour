@@ -1,0 +1,12 @@
+.link {
+  display: block;
+  width: 100%;
+  padding: 3px 0;
+  color: var(--text-light);
+}
+.link:hover {
+  color: var(--primary-1);
+}
+.link + .link {
+  margin-top: 10px;
+}/*# sourceMappingURL=LinkItem.module.css.map */

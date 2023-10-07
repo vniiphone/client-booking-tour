@@ -13,17 +13,17 @@ interface Props {
 }
 
 export const createProduct = async (data: Partial<Props>) => {
-    const res = await request.post(`/product/create`, { ...data })
+    const res = await request.post(`/tour/create`, { ...data })
     return res
 }
 
-export const editProduct = async (data: Partial<Props>) => {
-    const res = await request.put(`/product/${data.id}`, { ...data })
+export const editTour = async (data: Partial<Props>) => {
+    const res = await request.put(`/tour/${data.id}`, { ...data })
     return res
 }
 
 export const deleteProduct = async ({ id }: Partial<Props>) => {
-    const res = await request.delete(`/product/${id}`)
+    const res = await request.delete(`/tour/${id}`)
     return res
 }
 
