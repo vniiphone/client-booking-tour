@@ -7,6 +7,9 @@ export default interface LichTrinhTour {
   lichTrinhChiTiet: string
   visible : boolean
   tour_id: number
-  diemDen: {}
-  khachSan: {}
+  diemDen: [{}]
+  nameKhachSan: string
+  diaChiKhachSan: string
+  giaPhongKhachSan: number
+  phoneKhachSan: string
 }

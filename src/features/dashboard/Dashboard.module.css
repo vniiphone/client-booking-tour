@@ -1,0 +1,54 @@
+.heading {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.group {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.item {
+  width: 100%;
+  height: 160px;
+  padding: 20px 16px;
+  border: 1px solid var(--border-color);
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.item-icon {
+  font-size: 26px;
+  margin-right: 16px;
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.item-value {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--primary-1);
+  font-family: Poppins;
+}
+
+.item-desc {
+  color: var(--text);
+  font-size: 14px;
+}/*# sourceMappingURL=Dashboard.module.css.map */

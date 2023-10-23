@@ -80,7 +80,7 @@ function Item({ invoice }: { invoice: Invoice }) {
                         {formatCurrency(
                             invoice.cartItems.reduce(
                                 (acc, item) =>
-                                    (acc += item.quantity * item.product.price),
+                                    (acc += item.soLuongVe * item.tour.giaThamKhao),
                                 0
                             )
                         ) || 0}

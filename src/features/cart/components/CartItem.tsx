@@ -6,13 +6,13 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { updateQuantity } from '../services'
 import { deleteCartItem } from '../../../services'
 import CartItemModel from '../../../model/cart-item'
-
+import imgReplace from '../../../assets/img/global/404/007-travel-itinerary.png'
 import classNames from 'classnames/bind'
 import styles from '../Cart.module.scss'
 import formatCurrency from '../../../utils/formatCurrency'
 const cl = classNames.bind(styles)
 
-function CartItem({ id, product, quantity }: CartItemModel) {
+function CartItem({ id, tour, soLuongVe }: CartItemModel) {
     const queryClient = useQueryClient()
     const updateQuantityMutation = useMutation(updateQuantity, {
         onSuccess: (data) => {
@@ -25,7 +25,7 @@ function CartItem({ id, product, quantity }: CartItemModel) {
             id,
             quantity: value,
             user_id: 0,
-            product_id: 0,
+            tour_id: 0,
         })
     }
 
@@ -38,7 +38,7 @@ function CartItem({ id, product, quantity }: CartItemModel) {
     const handleDelete = (event: any) => {
         event.preventDefault()
         event.stopPropagation()
-        deleteCartItemMutation.mutate({ cart_id: id })
+        deleteCartItemMutation.mutate({ booking_id: id })
     }
     return (
         <div className={cl('item-wrapper')}>
@@ -48,16 +48,23 @@ function CartItem({ id, product, quantity }: CartItemModel) {
             />
             <img
                 src={
-                    product.imageUrl ||
-                    'https://product.hstatic.net/1000026716/product/ban-phim-co-akko-pc75b-plus-v2-black-gold-11_3d105b6dfbe2492284562002c6f995f5.jpg'
+                    tour.imageUrls || imgReplace
                 }
                 alt=''
                 className={cl('item-image')}
             />
             <Link to='/' className={cl('item-info')}>
-                <div className={cl('item-name')}>{product.name}</div>
+                <div className={cl('item-name')}>{tour.name}</div>
                 <div className={cl('item-price')}>
-                    {formatCurrency(product.price)}
+                    {tour.giaThamKhao.toLocaleString(
+                        'vi-VN',
+                        {
+                            style: 'currency',
+                            currency: 'VND',
+                            minimumFractionDigits: 0,
+                        }
+                    )}
+                    {/* {formatCurrency(tour.giaThamKhao)} */}
                 </div>
             </Link>
             <InputNumber
@@ -66,11 +73,19 @@ function CartItem({ id, product, quantity }: CartItemModel) {
                 }}
                 size='large'
                 min={1}
-                max={product.stock}
+                max={tour.soLuongVe}
                 defaultValue={1}
             />
             <div className={cl('item-subtotal')}>
-                {formatCurrency(product.price * quantity)}
+                {(tour.giaThamKhao * soLuongVe).toLocaleString(
+                    'vi-VN',
+                    {
+                        style: 'currency',
+                        currency: 'VND',
+                        minimumFractionDigits: 0,
+                    }
+                )}
+                {/* {formatCurrency(tour.giaThamKhao * soLuongVe)} */}
             </div>
         </div>
     )

@@ -13,22 +13,22 @@ function Footer() {
                     <div className='row'>
                         <div className='col l-3 m-4 c-6'>
                             <div className={cl('column')}>
-                                <div className={cl('heading')}>Categories</div>
+                                <div className={cl('heading')}>LINK</div>
                                 <ul className={cl('list')}>
                                     <li>
-                                        <Link to='/' className={cl('item')}>
-                                            Casual
+                                        <Link to='/tour' className={cl('item')}>
+                                            Chuyến Đi
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to='/' className={cl('item')}>
-                                            Modern
+                                        <Link to='/Account' className={cl('item')}>
+                                            Tài Khoản
                                         </Link>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div className='col l-3 m-4 c-6'>
+                        {/* <div className='col l-3 m-4 c-6'>
                             <div className={cl('column')}>
                                 <div className={cl('heading')}>Brands</div>
                                 <ul className={cl('list')}>
@@ -45,22 +45,11 @@ function Footer() {
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> */}
                         <div className='col l-3 m-4 c-6'>
                             <div className={cl('column')}>
-                                <div className={cl('heading')}>About us</div>
+                                <div className={cl('heading')}>Thông Tin</div>
                                 <div className={cl('members')}>
-                                    <div className={cl('member')}>
-                                        <div className={cl('student-id')}>
-                                            B1910203
-                                        </div>
-                                        <div className={cl('student-name')}>
-                                            Trần Hữu Đan
-                                        </div>
-                                        <div className={cl('leader')}>
-                                            LEADER
-                                        </div>
-                                    </div>
                                     <div className={cl('member')}>
                                         <div className={cl('student-id')}>
                                             B1910025
@@ -69,62 +58,37 @@ function Footer() {
                                             Nguyễn Quốc Vũ
                                         </div>
                                     </div>
-                                    <div className={cl('member')}>
-                                        <div className={cl('student-id')}>
-                                            B1909931
-                                        </div>
-                                        <div className={cl('student-name')}>
-                                            Lý Anh Khoa
-                                        </div>
-                                    </div>
-                                    <div className={cl('member')}>
-                                        <div className={cl('student-id')}>
-                                            B1910110
-                                        </div>
-                                        <div className={cl('student-name')}>
-                                            Võ Trọng Nghiêm
-                                        </div>
-                                    </div>
-                                    <div className={cl('member')}>
-                                        <div className={cl('student-id')}>
-                                            B1910452
-                                        </div>
-                                        <div className={cl('student-name')}>
-                                            Đoàn Hy Thiện
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className='col l-3 m-4 c-6'>
                             <div className={cl('column')}>
-                                <div className={cl('heading')}>Contact</div>
+                                <div className={cl('heading')}>Liên Hệ</div>
                                 <div className={cl('text')}>
                                     <div className={cl('text-item')}>
                                         <span className={cl('label')}>
-                                            Address:
+                                            Địa chỉ:
                                         </span>
-                                        2548 Broaddus Maple Court Avenue,
-                                        Madisonville KY 4783, USA
+                                        Số 66 Lê Lợi, Phường 3, Thành phố Sa Đéc, Tỉnh Đồng Tháp, Việt Nam
                                     </div>
                                     <div className={cl('text-item')}>
                                         <span className={cl('label')}>
-                                            Phone:
+                                            Di động:
                                         </span>
-                                        +777 2345 7885; +777 2345 7886
+                                        +84 939 941 069
                                     </div>
                                     <div className={cl('text-item')}>
                                         <span className={cl('label')}>
-                                            Hours:
+                                            Giờ làm việc:
                                         </span>
-                                        7 Days a week from 10 am to 6 pm
+                                       24/7
                                     </div>
                                     <div className={cl('text-item')}>
                                         <span className={cl('label')}>
                                             E-mail:
                                         </span>
                                         <Link className={cl('item')} to='/'>
-                                            info@gmail.com
+                                           <> </>dulichvuan@gmail.com
                                         </Link>
                                     </div>
                                 </div>

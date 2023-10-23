@@ -1,0 +1,25 @@
+.wrapper {
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  font-family: Poppins;
+}
+
+.xmark {
+  font-size: 7rem;
+  color: #c71022;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 2.25em;
+  color: #c71022;
+}
+
+.sub {
+  font-size: 1rem;
+  color: #b1b2b8;
+}/*# sourceMappingURL=PaymentFailed.module.css.map */

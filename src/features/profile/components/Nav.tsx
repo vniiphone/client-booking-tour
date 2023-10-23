@@ -15,15 +15,15 @@ function Nav() {
         <div className={cl('nav-wrapper')}>
             <Link to='/' className={cl('link')}>
                 <CodepenOutlined />
-                Products
+                Tour
             </Link>
             <Link to='/' className={cl('link')}>
                 <ShoppingCartOutlined />
-                Your cart
+                Tour đã yêu thích
             </Link>
             <Link to='/' className={cl('link')}>
                 <PoweroffOutlined />
-                Logout
+                Đăng Xuất
             </Link>
         </div>
     )

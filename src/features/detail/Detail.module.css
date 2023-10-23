@@ -1,0 +1,87 @@
+.wrapper {
+  padding-top: 12px;
+  padding-bottom: var(--padding-block);
+}
+
+.main {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.image-wrapper {
+  flex: 1;
+  background: rgba(245, 244, 244, 0.425) !important;
+  padding-bottom: 50px;
+  box-shadow: 2px 8px 4px #c7c7c9;
+  border-radius: 6px;
+}
+.image-wrapper .carousel {
+  height: 450px;
+  width: 700px;
+}
+.image-wrapper .carousel .carousel-item .image {
+  filter: drop-shadow(12px 8px 4px #c7c7c9);
+  width: 100%;
+  min-height: 500px;
+  aspect-ratio: 2/1;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.name {
+  font-size: 30px;
+  color: var(--black);
+}
+
+.cart {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.button {
+  width: 100%;
+}
+
+.textHeader {
+  margin-top: 30px;
+  font-size: 17px;
+  color: var(--black);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.textContent {
+  margin-left: 10px;
+  margin-top: 10px;
+  color: var(--black);
+  line-height: 1.5;
+}
+
+.textHeaderChild {
+  margin-top: 10px;
+  font-size: 16px;
+  color: var(--black);
+  line-height: 1.5;
+  font-weight: 550;
+}
+
+.childOfContent {
+  margin-left: 12px;
+  align-content: flex-start;
+}/*# sourceMappingURL=Detail.module.css.map */

@@ -1,0 +1,56 @@
+.wrapper {
+  margin-block: 2rem;
+  display: block;
+  width: 100%;
+  font-family: "Nunito", sans-serif;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-block: 0;
+}
+
+.item {
+  border: 1px solid transparent;
+  padding: 4px 11.5px;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f1e28;
+  background-color: #e1f3fe;
+  cursor: pointer;
+}
+.item.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: #bababa;
+}
+
+.link {
+  color: inherit;
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-img {
+  width: 20px;
+  height: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.active {
+  color: var(--primary-1);
+  background-color: #2678af;
+  border: 1px solid #dddddd;
+  color: #e1f3fe;
+}/*# sourceMappingURL=Pagination.module.css.map */

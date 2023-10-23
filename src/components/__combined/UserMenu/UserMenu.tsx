@@ -16,9 +16,9 @@ import { useDispatch } from 'react-redux'
 import { logout } from '../../../app/slices/authSlice'
 const cl = classNames.bind(styles)
 
-interface Props {}
+interface Props { }
 
-function UserMenu({}: Props) {
+function UserMenu({ }: Props) {
     const user = useAppSelector((state) => state.auth)
     const dispatch = useDispatch()
 
@@ -33,25 +33,25 @@ function UserMenu({}: Props) {
                     {user.role === 'admin' && (
                         <Link to='/admin/dashboard' className={cl('item')}>
                             <DashboardOutlined className={cl('icon')} />
-                            Admin
+                            Quản Trị Viên
                         </Link>
                     )}
                     <Link to='/cart' className={cl('item')}>
                         <ShoppingOutlined className={cl('icon')} />
-                        Cart
+                        Tour đã yêu thích
                     </Link>
                     <Link to='/invoice' className={cl('item')}>
                         <CreditCardOutlined className={cl('icon')} />
-                        Orders
+                        Hóa Đơn Thanh Toán
                     </Link>
                     <Link to='/profile' className={cl('item')}>
                         <UserOutlined className={cl('icon')} />
-                        Account
+                        Tài Khoản
                     </Link>
 
                     <div onClick={handleLogout} className={cl('item')}>
                         <LogoutOutlined className={cl('icon')} />
-                        Logout
+                        Đăng Xuất
                     </div>
                 </>
             ) : (
@@ -59,11 +59,11 @@ function UserMenu({}: Props) {
                     <div className={cl('name')}>GUEST</div>
                     <Link to='/login' className={cl('item')}>
                         <LoginOutlined className={cl('icon')} />
-                        Login
+                        Đăng Nhập
                     </Link>
                     <Link to='/register' className={cl('item')}>
                         <UserOutlined className={cl('icon')} />
-                        Register
+                        Đăng Ký
                     </Link>
                 </>
             )}

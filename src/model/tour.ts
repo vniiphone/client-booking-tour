@@ -1,4 +1,4 @@
-export default interface Product {
+export default interface Tour {
     id: number
     name: string
     tomTat: string
@@ -9,8 +9,8 @@ export default interface Product {
     noiKhoiHanh: string
     visible : boolean
     loaiTour_id: number
-    imageUrls: Array<string>
-    imagePublicId: string
+    imageUrls:string
+    imagePublicIds: string
     loaiTour: {}
     lichTrinhTour: {}
 }

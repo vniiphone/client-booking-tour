@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useAppSelector } from '../../../hooks'
 import { addToCart } from '../../../services'
 import Button from '../../../components/__atom/Button'
-
+import image4 from "../../../assets/img/global/LOGO.png"
 import classNames from 'classnames/bind'
 import styles from './ProductItem.module.scss'
 import { message } from 'antd'
@@ -13,21 +13,28 @@ const cl = classNames.bind(styles)
 interface Props {
     id: number
     name: string
+    tomTat: string
     giaThamKhao: number
-    imageUrls: Array<string>
-    category: any
     soLuongVe: number
+    ngayGioXuatPhat: string
+    ngayVe: string
+    noiKhoiHanh: string
+    visible: boolean
+    loaiTour_id: number
+    imageUrls: string
+    imagePublicIds: string
+    loaiTour: {}
 }
 
-function ProductItem({ id, name, giaThamKhao, imageUrls, category, soLuongVe }: Props) {
+function ProductItem({ id, name, giaThamKhao, imageUrls, soLuongVe }: Props) {
     const queryClient = useQueryClient()
     const navigate = useNavigate()
     const user = useAppSelector((state) => state.auth)
     const addToCartMutation = useMutation(addToCart, {
         onSuccess: (data) => {
             if (data.status === 200 || data.status === 201)
-                message.success('Added to cart')
-            else message.error('Tour is out of stock')
+                message.success('Thêm Thành công')
+            else message.error('Tour hết vé')
             queryClient.invalidateQueries(['cart'])
         },
     })
@@ -48,22 +55,30 @@ function ProductItem({ id, name, giaThamKhao, imageUrls, category, soLuongVe }: 
         <Link to={`/tour/${id}`} className={cl('item-wrapper')}>
             <img
                 src={
-                    imageUrls[0] ||
-                    'https://product.hstatic.net/1000026716/product/ban-phim-co-akko-pc75b-plus-v2-black-gold-11_3d105b6dfbe2492284562002c6f995f5.jpg'
+                    imageUrls || image4
                 }
                 alt=''
                 className={cl('item-img')}
             />
             <div className={cl('item-info')}>
                 <div className={cl('item-name')}>{name}</div>
-                <div className={cl('item-price')}>{giaThamKhao} VND</div>
+                <div className={cl('item-price')}>
+                    {giaThamKhao.toLocaleString(
+                        'vi-VN',
+                        {
+                            style: 'currency',
+                            currency: 'VND',
+                            minimumFractionDigits: 0,
+                        }
+                    )}
+                </div>
                 <Button
                     onClick={handleAddToCart}
                     className={cl('item-add')}
                     type='primary'
                     disabled={soLuongVe === 0}
                 >
-                    Add to cart
+                    Thêm vào Yêu Thích
                 </Button>
             </div>
             {/* <div className={cl('category')}>{category.name}</div> */}

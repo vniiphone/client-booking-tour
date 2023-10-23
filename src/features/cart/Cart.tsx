@@ -18,7 +18,7 @@ const cl = classNames.bind(styles)
 function Cart() {
     const user = useAppSelector((state) => state.auth)
     const cartQuery = useQuery(
-        ['cart'],
+        ['booking'],
         () => getCart({ user_id: user?.id }),
         {}
     )
@@ -32,14 +32,14 @@ function Cart() {
         <div className={cl('wrapper')}>
             <Breadcrumb>
                 <Breadcrumb.Item>
-                    <Link to='/'>Home</Link>
+                    <Link to='/'>Trang Chủ</Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                    <Link to='/cart'>Cart</Link>
+                    <Link to='/cart'>Yêu Thích</Link>
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div className={cl('main')}>
-                <div className={cl('heading')}>SHOPPING CART</div>
+                <div className={cl('heading')}>TOUR ĐÃ THÊM VÀO YÊU THÍCH</div>
                 <div className={`row ${cl('content')}`}>
                     <div className={`col l-8 m-8 c-12 ${cl('items')}`}>
                         {cartQuery.isLoading ? (
@@ -53,46 +53,79 @@ function Cart() {
                         )}
                         <div className={cl('tools')}>
                             <Link className={cl('tool')} to='/'>
-                                <LeftOutlined className={cl('icon')} /> CONTINUE
-                                SHOPPING
+                                <LeftOutlined className={cl('icon')} />
+                                TÌM THÊM TOUR KHÁC
                             </Link>
                             <div className={cl('tool')}>
-                                <DeleteOutlined className={cl('icon')} /> CLEAR
-                                SHOPPING CART
+                                <DeleteOutlined className={cl('icon')} />
+                                LÀM TRỐNG
+                                {/* TOUR ĐÃ THÊM VÀO YÊU THÍCH */}
                             </div>
                         </div>
                     </div>
                     <div className={`col l-4 m-4 c-12`}>
                         <div className={cl('summary')}>
                             <div className={cl('total')}>
-                                <div className={cl('label')}>SUBTOTAL:</div>
+                                <div className={cl('label')}>Tổng:</div>
                                 <div>
                                     {' '}
-                                    {formatCurrency(
+                                    {(
                                         cartQuery?.data?.reduce(
                                             (acc: number, item: CartItem) =>
-                                                (acc +=
-                                                    item.quantity *
-                                                    item.product.price),
+                                            (acc +=
+                                                item.soLuongVe *
+                                                item.tour.giaThamKhao),
+                                            0
+                                        ).toLocaleString(
+                                            'vi-VN',
+                                            {
+                                                style: 'currency',
+                                                currency: 'VND',
+                                                minimumFractionDigits: 0,
+                                            }
+                                        ))}
+
+                                    {/* {formatCurrency(
+                                        cartQuery?.data?.reduce(
+                                            (acc: number, item: CartItem) =>
+                                            (acc +=
+                                                item.soLuongVe *
+                                                item.tour.giaThamKhao),
                                             0
                                         )
-                                    )}
+                                    )} */}
                                 </div>
                             </div>
                             <div className={cl('total')}>
                                 <div className={cl('label', 'bold')}>
-                                    GRAND TOTAL:
+                                    Tổng Cộng:
                                 </div>
                                 <div>
-                                    {formatCurrency(
+                                    {(
                                         cartQuery?.data?.reduce(
                                             (acc: number, item: CartItem) =>
-                                                (acc +=
-                                                    item.quantity *
-                                                    item.product.price),
+                                            (acc +=
+                                                item.soLuongVe *
+                                                item.tour.giaThamKhao),
+                                            0
+                                        ).toLocaleString(
+                                            'vi-VN',
+                                            {
+                                                style: 'currency',
+                                                currency: 'VND',
+                                                minimumFractionDigits: 0,
+                                            }
+                                        ))}
+
+                                    {/* {formatCurrency(
+                                        cartQuery?.data?.reduce(
+                                            (acc: number, item: CartItem) =>
+                                            (acc +=
+                                                item.soLuongVe *
+                                                item.tour.giaThamKhao),
                                             0
                                         )
-                                    )}
+                                    )} */}
                                 </div>
                             </div>
                             <Button
@@ -101,7 +134,7 @@ function Cart() {
                                 className={cl('checkout')}
                                 to='/checkout'
                             >
-                                PROCEED TO CHECKOUT
+                                Đi Đến Bước Thanh Toán
                             </Button>
                         </div>
                     </div>

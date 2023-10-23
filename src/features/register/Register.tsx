@@ -11,23 +11,23 @@ import { createAccount } from './services'
 const cl = classNames.bind(styles)
 
 const SignupSchema = Yup.object().shape({
-    username: Yup.string()
-        .min(1, 'Name too short')
-        .max(50, 'Name too long')
-        .required('Enter your username'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string()
-        .min(6, 'Too Short!')
-        .max(40, 'Too Long!')
-        .required('Password is required')
-        .matches(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,50}$/,
-            'Password must contains at least one Uppercase letter, one lowercase letter and a number'
-        ),
-    confirmPassword: Yup.string().oneOf(
-        [Yup.ref('password'), null],
-        'Passwords must match'
-    ),
+    // username: Yup.string()
+    //     .min(1, 'Name too short')
+    //     .max(50, 'Name too long')
+    //     .required('Enter your username'),
+    // email: Yup.string().email('Invalid email').required('Required'),
+    // password: Yup.string()
+    //     .min(6, 'Too Short!')
+    //     .max(40, 'Too Long!')
+    //     .required('Password is required')
+    //     .matches(
+    //         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,50}$/,
+    //         'Password must contains at least one Uppercase letter, one lowercase letter and a number'
+    //     ),
+    // confirmPassword: Yup.string().oneOf(
+    //     [Yup.ref('password'), null],
+    //     'Passwords must match'
+    // ),
 })
 function Register() {
     const createAccountMutation = useMutation(createAccount, {
@@ -47,14 +47,14 @@ function Register() {
                     <Link to='/'>Home</Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                    <Link to='/register'>Register</Link>
+                    <Link to='/register'>ĐĂNG KÝ</Link>
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <div className={cl('heading')}>CREATE AN ACCOUNT</div>
+            <div className={cl('heading')}>TẠO TÀI KHOẢN</div>
             <div className={cl('container')}>
                 <div className={cl('form')}>
                     <div className={cl('form-heading')}>
-                        PERSONAL INFORMATION
+                        THÔNG TIN CÁ NHÂN
                     </div>
                     <Formik
                         initialValues={{
@@ -81,7 +81,7 @@ function Register() {
                                         htmlFor='username'
                                         className={cl('form-label')}
                                     >
-                                        FULL NAME *
+                                        TÊN TÀI KHOẢN *
                                     </label>
                                     <Field
                                         component={Input}
@@ -109,7 +109,7 @@ function Register() {
                                         htmlFor='email'
                                         className={cl('form-label')}
                                     >
-                                        EMAIL *
+                                        EMAIL CÁ NHÂN*
                                     </label>
                                     <Field
                                         component={Input}
@@ -137,7 +137,7 @@ function Register() {
                                         htmlFor='password'
                                         className={cl('form-label')}
                                     >
-                                        PASSWORD *
+                                        MẬT KHẨU *
                                     </label>
                                     <Field
                                         component={Input.Password}
@@ -165,7 +165,7 @@ function Register() {
                                         htmlFor='confirmPassword'
                                         className={cl('form-label')}
                                     >
-                                        CONFIRM PASSWORD *
+                                        XÁC NHẬN MẬT KHẨU *
                                     </label>
                                     <Field
                                         component={Input.Password}
@@ -174,7 +174,7 @@ function Register() {
                                         onBlur={handleBlur}
                                         status={
                                             errors.confirmPassword &&
-                                            touched.confirmPassword
+                                                touched.confirmPassword
                                                 ? 'error'
                                                 : ''
                                         }
@@ -190,10 +190,10 @@ function Register() {
                                     />
                                 </div>
                                 <div className={cl('actions')}>
-                                    <Button type='outline'>REGISTER</Button>
+                                    <Button type='outline'>ĐĂNG KÝ</Button>
                                     <span>or</span>
                                     <Link className={cl('link')} to='/'>
-                                        Return to home page?
+                                        Trở về trang chủ
                                     </Link>
                                 </div>
                             </Form>

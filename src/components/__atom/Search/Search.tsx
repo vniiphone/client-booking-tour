@@ -1,7 +1,7 @@
 import { CloseOutlined, SearchOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import { Empty, Input, Spin } from 'antd'
-import Product from '../../../model/tour'
+import Tour from '../../../model/tour'
 
 import classNames from 'classnames/bind'
 import styles from './Search.module.scss'
@@ -13,7 +13,7 @@ interface Props {
     className?: string
     visible: boolean
     loading: boolean
-    products: Product[]
+    tours: Tour[]
     onClose: Function
     onSearch: Function
 }
@@ -21,7 +21,7 @@ interface Props {
 function Search({
     value,
     onChange,
-    products,
+    tours,
     loading = false,
     className,
     visible = false,
@@ -53,11 +53,11 @@ function Search({
                 <div className={cl('results')}>
                     {loading ? (
                         <Spin className={cl('spin')} />
-                    ) : products.length > 0 ? (
-                        products.map((x: Product) => (
+                    ) : tours.length > 0 ? (
+                        tours.map((x: Tour) => (
                             <Link
                                 key={x.id}
-                                to={`/product/${x.id}`}
+                                to={`/tour/${x.id}`}
                                 className={cl('result-item')}
                             >
                                 {x.name}

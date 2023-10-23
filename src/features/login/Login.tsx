@@ -32,7 +32,7 @@ function Login() {
             navigate('/')
         },
         onError: (data) => {
-            message.error('Username or password is incorrect!')
+            message.error('Tài khoản hoặc mật khẩu sai!')
         },
     })
     const handleSubmit = async (values: any) => {
@@ -46,27 +46,26 @@ function Login() {
                     <Link to='/'>Home</Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                    <Link to='/login'>Home</Link>
+                    <Link to='/login'>Đăng Nhập</Link>
                 </Breadcrumb.Item>
             </Breadcrumb>
-            <div className={cl('heading')}>ALREADY REGISTERED?</div>
+            {/* <div className={cl('heading')}>ĐÃ CÓ TÀI KHOẢN?</div> */}
             <div className={cl('container')}>
                 <div className={cl('form')}>
-                    <div className={cl('form-heading')}>NEW CUSTOMER</div>
+                    <div className={cl('form-heading')}>
+                        ĐĂNG KÝ TÀI KHOẢN
+                    </div>
                     <div className={cl('text')}>
-                        By creating an account with our store, you will be able
-                        to move through the checkout process faster, store
-                        multiple shipping addresses, view and track your orders
-                        in your account and more.
+
                     </div>
                     <Button to='/register' type='outline'>
-                        CREATE AN ACCOUNT
+                        TẠO TÀI KHOẢN
                     </Button>
                 </div>
                 <div className={cl('form')}>
-                    <div className={cl('form-heading')}>LOGIN</div>
+                    <div className={cl('form-heading')}>ĐĂNG NHẬP</div>
                     <div className={cl('text')}>
-                        If you have an account with us, please log in.
+                        Nếu bạn đã có tài khoản, vui lòng đăng nhập
                     </div>
                     <Formik
                         initialValues={{ username: '', password: '' }}
@@ -126,12 +125,12 @@ function Login() {
                                     />
                                 </div>
                                 <div className={cl('actions')}>
-                                    <Button type='outline'>LOGIN</Button>
+                                    <Button type='outline'>ĐĂNG NHẬP</Button>
                                     <Link
                                         className={cl('link')}
                                         to='/password-recovery'
                                     >
-                                        Lost your password?
+                                        Quên mật khẩu?
                                     </Link>
                                 </div>
                             </Form>
