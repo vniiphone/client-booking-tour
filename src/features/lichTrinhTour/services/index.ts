@@ -6,23 +6,27 @@ interface Props {
 
 export const createLichTrinhTour = async (data: Partial<Props>) => {
     const res = await request.post(`/lichtrinh-tour/create-ltts`, { ...data })
+    console.log("Data LTT res: " + data)
     return res
 }
 
-export const editTour = async (data: Partial<Props>) => {
-    const res = await request.put(`/tour/${data.id}`, { ...data })
+export const editLichTrinhTour = async (data: Partial<Props>) => {
+    console.log("Edit LTT res id: " + data);
+    const res = await request.put(`/lichtrinh-tour/update/${data.id}`, {
+        ...data
+    })
     return res
 }
 
-export const deleteProduct = async ({ id }: Partial<Props>) => {
-    const res = await request.delete(`/tour/${id}`)
+export const deleteLichTrinhTour = async ({ id }: Partial<Props>) => {
+    const res = await request.delete(`/ltt-tour/${id}`)
     return res
 }
+
 
 export const getPrerequisites = async () => {
     const res = Promise.all([
-        request.get('/brand/'),
-        request.get('/category'),
+        request.get('/tour'),
     ]).then((values) => {
         return values.map(x=>(x.data))
     })

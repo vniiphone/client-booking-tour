@@ -5,18 +5,18 @@ import styles from '../Profile.module.scss'
 import { useAppSelector } from '../../../hooks'
 import User from '../../../model/user'
 const cl = classNames.bind(styles)
-
-interface Props{
-  user: User
+import image4 from "../../../assets/img/global/7158459.jpg"
+interface Props {
+    user: User
 }
 
-function Info({user}:Props) {
-   
+function Info({ user }: Props) {
+
     return (
         <div className={cl('info-wrapper')}>
             <div className={cl('image')}>
                 <img
-                    src='https://product.hstatic.net/1000026716/product/ban-phim-co-akko-pc75b-plus-v2-black-gold-11_3d105b6dfbe2492284562002c6f995f5.jpg'
+                    src={image4}
                     alt=''
                     className={cl('img')}
                 />

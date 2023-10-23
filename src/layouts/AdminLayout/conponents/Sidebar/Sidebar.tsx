@@ -25,37 +25,45 @@ function Sidebar() {
                 Dashboard
             </Button>
             <Group title='management'>
-                <Button
+                {/* <Button
                     size='large'
                     className={cl('item')}
                     leftIcon={<AppleOutlined />}
                     to='/admin/brand/list'
                 >
                     Brand
-                </Button>
+                </Button> */}
                 <Button
                     size='large'
                     className={cl('item')}
                     leftIcon={<DeploymentUnitOutlined />}
-                    to='/admin/category/list'
+                    to='/admin/loaiTour/list'
                 >
-                    Categories
+                    Loại Chuyến Đi
                 </Button>
                 <Button
                     size='large'
                     className={cl('item')}
                     leftIcon={<CodepenOutlined />}
-                    to='/admin/product/list'
+                    to='/admin/tour/list'
                 >
-                    Products
+                    Chuyến Đi
                 </Button>
+                {/* <Button
+                    size='large'
+                    className={cl('item')}
+                    leftIcon={<CodepenOutlined />}
+                    to='/admin/lichtrinhtour/list'
+                >
+                    Lịch Trình Tour
+                </Button> */}
                 <Button
                     size='large'
                     className={cl('item')}
                     leftIcon={<CarryOutOutlined />}
                     to='/admin/order'
                 >
-                    Orders
+                    Vé Được Bán Ra
                 </Button>
             </Group>
         </div>

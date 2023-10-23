@@ -12,23 +12,28 @@ import styles from './MiniCart.module.scss'
 import { useAppSelector } from '../../../hooks'
 import CartItem from '../../../model/cart-item'
 import formatCurrency from '../../../utils/formatCurrency'
+import { useState } from 'react'
 const cl = classNames.bind(styles)
 
 function MiniCart() {
     const user = useAppSelector((state) => state.auth)
-    const cartQuery = useQuery(
-        ['cart'],
-        () => getCart({ user_id: user?.id }),
-        {}
+    const [cartList, setCartList] = useState();
+    const bookingQuery = useQuery(
+        ['booking'],
+        () => getCart({ user_id: user?.id })
     )
+
+
     return (
+
         <div className={cl('wrapper')}>
-            {cartQuery.isLoading ? (
+            {bookingQuery.isLoading ? (
                 <Spin />
-            ) : cartQuery.data.length < 1 ? (
-                <Empty />
+            ) : bookingQuery.data.length < 1 ? (
+                <h3> Null</h3>
+                // <Empty />
             ) : (
-                cartQuery.data.map((x: CartItem) => (
+                bookingQuery.data.map((x: CartItem) => (
                     <MiniCartItem key={x.id} {...x} />
                 ))
             )}
@@ -37,9 +42,9 @@ function MiniCart() {
                 <span>Tổng cộng:</span>
                 <span>
                     {formatCurrency(
-                        cartQuery?.data?.reduce(
+                        bookingQuery?.data?.reduce(
                             (acc: number, item: CartItem) =>
-                                (acc += item.quantity * item.tour.giaThamKhao),
+                                (acc += item.soLuongVe * item.tour.giaThamKhao),
                             0
                         )
                     )}
@@ -52,6 +57,7 @@ function MiniCart() {
                 Xem Tour Đang Yêu Thích
             </Link>
         </div>
+
     )
 }
 

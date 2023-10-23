@@ -17,6 +17,13 @@ import {
     EditCategory,
 } from '../features/category'
 import { CreateProduct, ListProduct, EditProduct } from '../features/product'
+
+import {
+    CreateLichTrinhTour,
+    ListLichTrinhTour,
+    EditLichTrinhTour
+} from '../features/lichTrinhTour/Index'
+
 import Profile from '../features/profile'
 
 import HomeLayout from '../layouts/HomeLayout'
@@ -46,33 +53,8 @@ const routes = [
         role: 'admin',
     },
     { path: '/tour/:id', component: Detail },
-    
-    // Lịch trình tour -> Được lấy từ list Tour -> 
-    // Lấy id tour -> mở ra list LichTrinhTour
-    {
-        path: '/admin/lichTrinhTour/create',
-        component: CreateBrand,
-        layout: AdminLayout,
-        role: 'admin',
-    },
-    {
-        path: '/admin/lichTrinhTour/list',
-        component: ListBrand,
-        layout: AdminLayout,
-        role: 'admin',
-    },
-    {
-        path: '/admin/lichTrinhTour/:id',
-        component: EditBrand,
-        layout: AdminLayout,
-        role: 'admin',
-    },
-
-
-
     // Lịch trình tour
 
-    
 // Loại Tour
     {
         path: '/admin/loaiTour/create',
@@ -95,23 +77,43 @@ const routes = [
 // Loại Tour
 
     {
-        path: '/admin/product/create',
+        path: '/admin/tour/create',
         component: CreateProduct,
         layout: AdminLayout,
         role: 'admin',
     },
     {
-        path: '/admin/product/list',
+        path: '/admin/tour/list',
         component: ListProduct,
         layout: AdminLayout,
         role: 'admin',
     },
     {
-        path: '/admin/product/:id',
+        path: '/admin/tour/:id',
         component: EditProduct,
         layout: AdminLayout,
         role: 'admin',
     },
+    ///admin/lichtrinhtour/list
+    {
+        path: '/admin/lichtrinhtour/create/:id',
+        component: CreateLichTrinhTour,
+        layout: AdminLayout,
+        role: 'admin',
+    },
+    {
+        path: '/admin/lichtrinhtour/list/:id',
+        component: ListLichTrinhTour,
+        layout: AdminLayout,
+        role: 'admin',
+    },
+    {
+        path: '/admin/lichtrinhtour/:id/:lichtrinh_id',
+        component: EditLichTrinhTour,
+        layout: AdminLayout,
+        role: 'admin',
+      }
+      
 ]
 
 export default routes

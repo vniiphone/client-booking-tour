@@ -37,7 +37,7 @@ function Header() {
     )
     console.log(searchQuery)
 
-    const handleSearch = () => {}
+    const handleSearch = () => { }
     return (
         <div className={cl('wrapper')}>
             <div className={cl('inner')}>
@@ -90,7 +90,7 @@ function Header() {
                                         })
                                     }
                                 >
-                                    HOME
+                                    Trang Chủ
                                 </NavLink>
 
                                 <div className={cl('nav-item-extend')}>
@@ -107,7 +107,7 @@ function Header() {
                                         })
                                     }
                                 >
-                                    SHOP
+                                    Công Ty Du Lịch
                                 </NavLink>
 
                                 <div className={cl('nav-item-extend')}>
@@ -119,14 +119,14 @@ function Header() {
                             </div>
                             <div className={cl('nav-item')}>
                                 <NavLink
-                                    to='/shop'
+                                    to='/information'
                                     className={(state) =>
                                         cl({
                                             active: state.isActive,
                                         })
                                     }
                                 >
-                                    CONTACT
+                                    Liên Hệ
                                 </NavLink>
                             </div>
                         </div>
@@ -137,7 +137,7 @@ function Header() {
                     value={searchValue}
                     onChange={setSearchValue}
                     onClose={() => setSearchVisible(false)}
-                    onSearch={() => {}}
+                    onSearch={() => { }}
                     visible={searchVisible}
                     className={cl('search')}
                     loading={

@@ -116,11 +116,11 @@ function FormComp() {
                 addresses:
                     addressQuery?.data?.length > 0
                         ? addressQuery?.data?.map((x: Address) => ({
-                              ...x,
-                              district_id: x.ward.district.id,
-                              city_id: x.ward.district.city.id,
-                              ward_id: x.ward.id,
-                          }))
+                            ...x,
+                            district_id: x.ward.district.id,
+                            city_id: x.ward.district.city.id,
+                            ward_id: x.ward.id,
+                        }))
                         : [sampleAddress],
             }}
             enableReinitialize
@@ -138,7 +138,7 @@ function FormComp() {
                 <Form className={cl('form')}>
                     <div className={cl('addresses')}>
                         <div className={cl('addresses-heading')}>
-                            Add or update receipient profiles
+                            {/* Add or update receipient profiles */}
                         </div>
                         <FieldArray name='addresses'>
                             {(arrayHelpers) => (
@@ -154,7 +154,7 @@ function FormComp() {
                                                         htmlFor='confirmPassword'
                                                         className='form-label'
                                                     >
-                                                        City:
+                                                        Thành Phố/Tỉnh:
                                                     </label>
                                                     <Field
                                                         component={Select}
@@ -187,7 +187,7 @@ function FormComp() {
                                                         }}
                                                     >
                                                         <Option value={0}>
-                                                            -- Choose city --
+                                                            -- Chọn Thành Phố/Tỉnh --
                                                         </Option>
                                                         {cityQuery?.data?.map(
                                                             (x: City) => (
@@ -211,7 +211,7 @@ function FormComp() {
                                                         htmlFor='confirmPassword'
                                                         className='form-label'
                                                     >
-                                                        District:
+                                                        Quận/Huyện:
                                                     </label>
                                                     <Field
                                                         component={Select}
@@ -240,40 +240,40 @@ function FormComp() {
                                                         }}
                                                     >
                                                         <Option value={0}>
-                                                            -- Choose district
+                                                            -- Chọn Quận/Huyện
                                                             --
                                                         </Option>
                                                         {values.addresses[index]
                                                             .city_id !== 0
                                                             ? districtQuery?.data?.map(
-                                                                  (
-                                                                      x: District
-                                                                  ) => {
-                                                                      if (
-                                                                          x.city
-                                                                              .id ===
-                                                                          values
-                                                                              .addresses[
-                                                                              index
-                                                                          ]
-                                                                              .city_id
-                                                                      )
-                                                                          return (
-                                                                              <Option
-                                                                                  key={
-                                                                                      x.id
-                                                                                  }
-                                                                                  value={
-                                                                                      x.id
-                                                                                  }
-                                                                              >
-                                                                                  {
-                                                                                      x.name
-                                                                                  }
-                                                                              </Option>
-                                                                          )
-                                                                  }
-                                                              )
+                                                                (
+                                                                    x: District
+                                                                ) => {
+                                                                    if (
+                                                                        x.city
+                                                                            .id ===
+                                                                        values
+                                                                            .addresses[
+                                                                            index
+                                                                        ]
+                                                                            .city_id
+                                                                    )
+                                                                        return (
+                                                                            <Option
+                                                                                key={
+                                                                                    x.id
+                                                                                }
+                                                                                value={
+                                                                                    x.id
+                                                                                }
+                                                                            >
+                                                                                {
+                                                                                    x.name
+                                                                                }
+                                                                            </Option>
+                                                                        )
+                                                                }
+                                                            )
                                                             : null}
                                                     </Field>
                                                     <ErrorMessage
@@ -287,7 +287,7 @@ function FormComp() {
                                                         htmlFor='confirmPassword'
                                                         className='form-label'
                                                     >
-                                                        Ward:
+                                                        Phường/Xã:
                                                     </label>
                                                     <Field
                                                         component={Select}
@@ -312,38 +312,38 @@ function FormComp() {
                                                         }
                                                     >
                                                         <Option value={0}>
-                                                            -- Choose ward --
+                                                            -- Phường/Xã --
                                                         </Option>
                                                         {values.addresses[index]
                                                             .district_id !== 0
                                                             ? wardQuery?.data?.map(
-                                                                  (x: Ward) => {
-                                                                      if (
-                                                                          x
-                                                                              .district
-                                                                              .id ===
-                                                                          values
-                                                                              .addresses[
-                                                                              index
-                                                                          ]
-                                                                              .district_id
-                                                                      )
-                                                                          return (
-                                                                              <Option
-                                                                                  key={
-                                                                                      x.id
-                                                                                  }
-                                                                                  value={
-                                                                                      x.id
-                                                                                  }
-                                                                              >
-                                                                                  {
-                                                                                      x.name
-                                                                                  }
-                                                                              </Option>
-                                                                          )
-                                                                  }
-                                                              )
+                                                                (x: Ward) => {
+                                                                    if (
+                                                                        x
+                                                                            .district
+                                                                            .id ===
+                                                                        values
+                                                                            .addresses[
+                                                                            index
+                                                                        ]
+                                                                            .district_id
+                                                                    )
+                                                                        return (
+                                                                            <Option
+                                                                                key={
+                                                                                    x.id
+                                                                                }
+                                                                                value={
+                                                                                    x.id
+                                                                                }
+                                                                            >
+                                                                                {
+                                                                                    x.name
+                                                                                }
+                                                                            </Option>
+                                                                        )
+                                                                }
+                                                            )
                                                             : null}
                                                     </Field>
                                                     <ErrorMessage
@@ -357,7 +357,7 @@ function FormComp() {
                                                         htmlFor='confirmPassword'
                                                         className='form-label'
                                                     >
-                                                        Address:
+                                                        Địa Chỉ Nhà:
                                                     </label>
                                                     <Field
                                                         id={`addresses.${index}.address`}
@@ -365,7 +365,7 @@ function FormComp() {
                                                         value={
                                                             values.addresses[
                                                                 index
-                                                            ].address
+                                                            ].diaChi
                                                         }
                                                         component={Input}
                                                         onChange={handleChange}

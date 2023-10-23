@@ -4,7 +4,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useAppSelector } from '../../../hooks'
 import { addToCart } from '../../../services'
 import Button from '../../../components/__atom/Button'
-
+import image4 from "../../../assets/img/global/LOGO.png"
 import classNames from 'classnames/bind'
 import styles from './ProductItem.module.scss'
 import { message } from 'antd'
@@ -21,8 +21,8 @@ interface Props {
     noiKhoiHanh: string
     visible: boolean
     loaiTour_id: number
-    imageUrls: Array<string>
-    imagePublicId: string
+    imageUrls: string
+    imagePublicIds: string
     loaiTour: {}
 }
 
@@ -33,8 +33,8 @@ function ProductItem({ id, name, giaThamKhao, imageUrls, soLuongVe }: Props) {
     const addToCartMutation = useMutation(addToCart, {
         onSuccess: (data) => {
             if (data.status === 200 || data.status === 201)
-                message.success('Added to cart')
-            else message.error('Tour is out of stock')
+                message.success('Thêm Thành công')
+            else message.error('Tour hết vé')
             queryClient.invalidateQueries(['cart'])
         },
     })
@@ -55,8 +55,7 @@ function ProductItem({ id, name, giaThamKhao, imageUrls, soLuongVe }: Props) {
         <Link to={`/tour/${id}`} className={cl('item-wrapper')}>
             <img
                 src={
-                    imageUrls[0] ||
-                    'https://product.hstatic.net/1000026716/product/ban-phim-co-akko-pc75b-plus-v2-black-gold-11_3d105b6dfbe2492284562002c6f995f5.jpg'
+                    imageUrls || image4
                 }
                 alt=''
                 className={cl('item-img')}

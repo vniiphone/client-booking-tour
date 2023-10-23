@@ -8,7 +8,8 @@ interface Props {
     tour_id: number
     quantity: number
     booking_id: number
-    hanhKhach:Object
+    hanhKhach: Object
+    lichtrinh_id: string
 }
 
 // Get all Tuors
@@ -23,23 +24,71 @@ export const getTours = async ({ page, sortBy }: Partial<Props>) => {
 
 // Get product by id
 export const getTourById = async ({ id }: Partial<Props>) => {
-    const res = await request.get(`/tour/${id}`)
-    if (res.status === 200) return res.data
+    const url = `/tour/${id}`
+    const res = await request.get(url)
+
+    if (res.status === 200) {
+        
+        // console.log("URL: "+ url + 'res: ' + res.da)
+        return res.data
+    } 
     return {}
 }
+
+export const getLichTrinhTourById = async ({ id }: Partial<Props>)=> {
+    // const res = await request.get(`/lichtrinh-tour/lichtrinhTour-chitiet/${id}`)
+    const url = `/lichtrinh-tour/lichtrinhTour-chitiet/${id}`
+const res = await request.get(url)
+    if (res.status === 200) {
+        // console.log("URL: "+ url + 'res: ' + res.data)
+        return res.data
+    } 
+    else {
+        return []
+  
+    }
+ }
+// export const getLichTrinhSingle = async ({ lichtrinh_id }: Partial<Props>) => {
+//     console.log("getLichTrinhSingle" + lichtrinh_id);
+//     // const res = await request.get(`/lichtrinh-tour/lichtrinhTour-chitiet/${id}`)
+//     const url = `/lichtrinh-tour/ltt-chitiet/${lichtrinh_id}`
+// const res = await request.get(url)
+//     if (res.status === 200) {
+//         console.log("URL: "+ url + 'res: ' + res.data)
+//         return res.data
+//     } 
+//     else {
+//         return []
+  
+//     }
+// }
+export const getLichTrinhSingle = async ({ lichtrinh_id }: Partial<Props>) => {
+    console.log("getLichTrinhSingle " + lichtrinh_id);
+    const url = `/lichtrinh-tour/ltt-chitiet/${lichtrinh_id}`;
+    const res = await request.get(url);
+
+    if (res.status === 200) {
+        console.log("URL: " + url + ' res: ' + res.data);
+        return res.data;
+    } else {
+        return [];
+    }
+}
+
+
 
 // Add to cart
 export const addToCart = async ({
     user_id,
     tour_id,
     quantity,
-    hanhKhach,
+    // hanhKhach,
 }: Partial<Props>) => {
     const res = await request.post(`/Booking/create`, {
         user_id,
         tour_id,
         quantity,
-        hanhKhach
+        // hanhKhach
     })
     return res
 }
@@ -78,14 +127,10 @@ export const createAddress = async (value: {
     phone: string
 }) => {
     const res = await request.post('/address/create', { ...value })
+    console.log("debug createAddress: " + value)
     return res
 }
 
 
 
-export const getLichTrinhTourById = async ({ id }: Partial<Props>)=> {
-    const res = await request.get(`/lichtrinh-tour/lichtrinhTour-chitiet/${id}`)
-    if (res.status === 200) return res.data
-    return []
- }
 

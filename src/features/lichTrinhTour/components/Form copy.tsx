@@ -97,14 +97,16 @@ function FormComp({ edit, handleSubmit }: Props) {
                         ngayVe: '',
                         soLuongVe: 0,
                         loaiTour_id: 0,
-                        imageUrls: '',
-                        imagePublicIds: '',
+                        imageUrls: [],
+                        imagePublicIds: [],
+                        tourCode: '',
                         noiKhoiHanh: '',
                         visible: true,
                     }
                     : {
                         ...tourQuery.data,
                         loaiTour_id: tourQuery.data.loaiTour.id,
+
                     }
             }
             enableReinitialize={true}
@@ -286,99 +288,50 @@ function FormComp({ edit, handleSubmit }: Props) {
 
                     <div className='form-group'>
                         <label className='form-label'>Ngày giờ Xuất Phát</label>
-
-                        <Field
-                            component={Input}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            size='large'
-                            name='ngayGioXuatPhat'
-                            id='ngayGioXuatPhat'
-                            status={
-                                errors.ngayGioXuatPhat && touched.ngayGioXuatPhat
-                                    ? 'error'
-                                    : ''
-                            }
-                            value={values.ngayGioXuatPhat}
-                        />
-                        <ErrorMessage
-                            component='div'
-                            className='form-error'
-                            name='ngayGioXuatPhat'
-                        />
-                        {/* {({ field, form }: FieldProps) => (
+                        <Field name='ngayGioXuatPhat'>
+                            {({ field, form }: FieldProps) => (
                                 <DatePicker
-                                    format='DD-MM-YYYY'
-                                    value={field.value ? moment(field.value, 'DD-MM-YYYY') : null}
-                                    onChange={(date) => {
-                                        if (date !== null) {
-                                            const timestamp = date.unix() * 1000;
-                                            form.setFieldValue('ngayGioXuatPhat', timestamp);
-                                            console.log('ngayGioXuatPhat: ', timestamp);
-                                        }
+                                    showTime={{ format: 'HH:mm' }}
+                                    format='DD-MM-YYYY HH:mm'
+                                    value={field.value ? moment(field.value) : null}
+                                    onChange={(date, dateString) => {
+                                        form.setFieldValue('ngayGioXuatPhat', dateString);
+                                        console.log('ngayGioXuatPhat' + dateString);
                                     }}
+                                    onOk={(date) => {
+                                        const timestamp = dayjs(date.toDate()).unix() * 1000; // Chuyển đổi sang timestamp
+                                        form.setFieldValue('ngayGioXuatPhat', timestamp);
+                                        console.log('ngayGioXuatPhat: ', timestamp);
+                                    }}
+
                                     onBlur={() => form.setFieldTouched('ngayGioXuatPhat', true)}
                                 />
-
-                                // <DatePicker
-                                //     showTime={{ format: 'HH:mm' }}
-                                //     format='DD-MM-YYYY HH:mm'
-                                //     value={field.value ? moment(field.value) : null}
-                                //     onChange={(date, dateString) => {
-                                //         form.setFieldValue('ngayGioXuatPhat', dateString);
-                                //         console.log('ngayGioXuatPhat' + dateString);
-                                //     }}
-                                //     onOk={(date) => {
-
-                                //         const timestamp = date.valueOf();
-                                //         form.setFieldValue('ngayGioXuatPhat', timestamp);
-                                //         // const timestamp = dayjs(date.toDate()).unix() * 1000; // Chuyển đổi sang timestamp
-                                //         form.setFieldValue('ngayGioXuatPhat', timestamp);
-                                //         console.log('ngayGioXuatPhat: ', timestamp);
-                                //     }}
-
-                                //     onBlur={() => form.setFieldTouched('ngayGioXuatPhat', true)}
-                                // />
-                            )} */}
-
+                            )}
+                        </Field>
                         <div className='form-group'>
                             <label className='form-label'>Ngày Về</label>
-
-                            <Field
-                                component={Input}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                size='large'
-                                name='ngayVe'
-                                id='ngayVe'
-                                status={
-                                    errors.ngayVe && touched.ngayVe
-                                        ? 'error'
-                                        : ''
-                                }
-                                value={values.ngayVe}
-                            />
-                            <ErrorMessage
-                                component='div'
-                                className='form-error'
-                                name='ngayVe'
-                            />
-                            {/* <Field name='ngayVe'>
+                            <Field name='ngayVe'>
                                 {({ field, form }: FieldProps) => (
                                     <DatePicker
-                                        format='DD-MM-YYYY'
-                                        value={field.value ? moment(field.value, 'DD-MM-YYYY') : null}
-                                        onChange={(date) => {
-                                            if (date !== null) { // Kiểm tra nếu date không null
-                                                const timestamp = date.valueOf();
-                                                form.setFieldValue('ngayVe', timestamp);
-                                                console.log('ngayVe: ', timestamp);
-                                            }
+                                        format='DD-MM-YYYY HH'
+                                        value={field.value ? moment(field.value) : null}
+                                        showTime={{ format: 'HH' }}
+
+                                        onChange={(date, dateString) => {
+                                            form.setFieldValue('ngayVe', dateString);
+                                            console.log('ngayVe' + dateString);
                                         }}
+                                        onOk={(date) => {
+                                            const timestamp = dayjs(date.toDate()).unix() * 1000; // Chuyển đổi sang timestamp
+                                            form.setFieldValue('ngayVe', timestamp);
+                                            console.log('ngayVe: ', timestamp);
+                                        }}
+
+
                                         onBlur={() => form.setFieldTouched('ngayVe', true)}
                                     />
                                 )}
-                            </Field> */}
+                            </Field>
 
                             <ErrorMessage
                                 component='div'

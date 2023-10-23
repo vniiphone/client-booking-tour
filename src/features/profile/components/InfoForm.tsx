@@ -55,10 +55,10 @@ function FormComp({ user }: Props) {
             {({ values, handleChange, handleBlur, setFieldValue }) => (
                 <Form className={cl('form')}>
                     <div className={cl('heading')}>
-                        Welcome to the information
+                        Thông Tin Tài Khoản
                     </div>
                     <div className={cl('subheading')}>
-                        Check or change your informations as you want
+                        {/* Check or change your informations as you want */}
                     </div>
                     <div className={cl('basic')}>
                         <div className='form-group'>

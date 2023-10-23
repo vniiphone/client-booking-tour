@@ -4,12 +4,14 @@ import { ColumnsType } from 'antd/es/table'
 import React, { useMemo } from 'react'
 import { Delete } from '../../components/__atom/ActionIcon'
 import Wrapper from '../../components/__atom/FormWrapper'
-import Address from '../../model/address'
+// import Address from '../../model/address'
 import CartItem from '../../model/cart-item'
-import Product from '../../model/tour'
+// import Product from '../../model/tour'
 import formatCurrency from '../../utils/formatCurrency'
 import Expand from './components/Expand'
 import { deleteInvoice, getInvoices } from './services'
+import Profile from '../../model/profile'
+import Tour from '../../model/tour'
 
 interface IUser {
     id: number
@@ -25,10 +27,13 @@ interface DataType {
     method: string
     timeCreate: string
     totalPrice: number
+    paymentMethod: string
     wasPay: boolean
-    address: Address
+    profile: Profile
     user: IUser
     cartItems: CartItem[]
+    tour: Tour
+    soLuongVeDaDat: number
 }
 
 function Order() {
@@ -46,38 +51,49 @@ function Order() {
     const data: DataType[] = invoicesQuery.isLoading
         ? []
         : invoicesQuery.data.map((x: DataType) => ({
-              ...x,
-              key: x.invoiceId,
-          }))
+            ...x,
+            key: x.invoiceId,
+        }))
 
     const columns: ColumnsType<DataType> = useMemo(
         () => [
             {
-                title: 'User name',
+                title: 'username',
                 dataIndex: 'username',
                 key: 'username',
                 render: (_, record) => <div>{record.user.username}</div>,
             },
             {
-                title: 'Payment confirm at',
+                title: 'Hình Thức Thanh Toán',
+                dataIndex: 'paymentMethod',
+                key: 'paymentMethod',
+            },
+            {
+                title: 'Thanh Toán Lúc',
                 dataIndex: 'timeCreate',
                 key: 'timeCreate',
             },
             {
-                title: 'Total',
+                title: 'Tổng Cộng',
                 dataIndex: 'totalPrice',
                 key: 'totalPrice',
                 render: (value) => formatCurrency(value),
             },
             {
-                title: 'Status',
+                title: 'Số Lượng Vé Mua',
+                dataIndex: 'soLuongVeDaDat',
+                key: 'soLuongVeDaDat',
+                // render: (value) => formatCurrency(value),
+            },
+            {
+                title: 'Trạng Thái Thanh Toán',
                 dataIndex: 'status',
                 key: 'status',
                 render: (value: boolean) =>
                     value ? (
-                        <Tag color={'volcano'}>PENDING</Tag>
+                        <Tag color={'volcano'}>Đang Chờ</Tag>
                     ) : (
-                        <Tag color={'geekblue'}>PAID</Tag>
+                        <Tag color={'geekblue'}>Đã Thanh Toán</Tag>
                     ),
             },
             {
@@ -99,15 +115,16 @@ function Order() {
         []
     )
     return (
-        <Wrapper title='Invoices' description={`Manage all invoices`}>
+        <Wrapper title='Hóa Đơn' description={`Manage all invoices`}>
             <Table
                 columns={columns}
                 loading={invoicesQuery.isLoading}
                 expandable={{
                     expandedRowRender: (record, index) => (
                         <Expand
-                            address={record.address}
+                            profile={record.profile}
                             record={record.cartItems}
+                            tour={record.tour}
                         />
                     ),
                     // rowExpandable: (record) => record.name !== 'Not Expandable',

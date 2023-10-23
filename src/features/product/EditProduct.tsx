@@ -11,15 +11,15 @@ function EditProduct() {
     const editProductMutation = useMutation(editTour, {
         onSuccess: (data) => {
             if (data.status === 201) {
-                message.success('Product updated')
+                message.success('Tour updated')
             }
             else message.error('Something went wrong!')
         },
     })
     return (
         <Wrapper
-            title='Edit Tour'
-            description='Chỉnh sửa thông tin tour'
+            title='Chỉnh Sửa Thông Tin Tour'
+        // description='Chỉnh sửa thông tin tour'
         >
             <Form edit handleSubmit={editProductMutation}></Form>
         </Wrapper>

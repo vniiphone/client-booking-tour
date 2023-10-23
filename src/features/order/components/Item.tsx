@@ -16,23 +16,23 @@ function Item({ item }: { item: CartItem }) {
                 width={100}
                 height={100}
                 src={
-                    item.product.imageUrl ||
-                    'https://product.hstatic.net/1000026716/product/ban-phim-co-akko-pc75b-plus-v2-black-gold-11_3d105b6dfbe2492284562002c6f995f5.jpg'
+                    item.tour.imageUrls
+                    // 'https://product.hstatic.net/1000026716/product/ban-phim-co-akko-pc75b-plus-v2-black-gold-11_3d105b6dfbe2492284562002c6f995f5.jpg'
                 }
                 fallback={productPlaceholder}
             />
-            <div className={cl('name')}>{item.product.name}</div>
+            <div className={cl('name')}>{item.tour.name}</div>
             <div className={cl('info')}>
                 <div className={cl('price')}>
-                    {formatCurrency(item.product.price)}
+                    {formatCurrency(item.tour.giaThamKhao)}
                 </div>
                 <div className={cl('quantity')}>
                     x {''}
-                    {item.quantity}
+                    {item.soLuongVe}
                     {''} =
                 </div>
                 <div className={cl('price')}>
-                    {formatCurrency(item.product.price * item.quantity)}
+                    {formatCurrency(item.tour.giaThamKhao * item.soLuongVe)}
                 </div>
             </div>
         </div>

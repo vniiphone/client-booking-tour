@@ -20,7 +20,7 @@ function Profile() {
                     <Nav></Nav>
                 </div>
                 <div className='col l-8 m-6 c-12'>
-                    <InfoForm user={user}/>
+                    <InfoForm user={user} />
                     <Form></Form>
                 </div>
             </div>

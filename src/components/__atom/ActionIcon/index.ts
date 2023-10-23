@@ -1,1 +1,1 @@
-export { Edit, Delete } from './ActionIcon'
+export { Edit, Delete, Add } from './ActionIcon'

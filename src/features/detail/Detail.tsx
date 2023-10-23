@@ -13,22 +13,11 @@ import classNames from 'classnames/bind'
 import styles from './Detail.module.scss'
 import User from '../../model/user'
 import DiemDen from '../../model/diemDen'
-import KhachSan from '../../model/khachSan'
 const cl = classNames.bind(styles)
 
 interface Props {
     id: number
 }
-// interface LichTrinh {
-//     // id: number
-//     phuongTien: string
-//     sttLichTrinh: number
-//     tenLichTrinh: string
-//     ghiChu: string
-//     lichTrinhChiTiet: string
-//     diemDen: Array<DiemDen>
-//     khachSan: KhachSan
-// }
 
 function Detail() {
     const queryClient = useQueryClient()
@@ -45,8 +34,8 @@ function Detail() {
     const addToCartMutation = useMutation(addToCart, {
         onSuccess: (data) => {
             if (data.status === 200 || data.status === 201)
-                message.success('Added to cart')
-            else message.error('Product is out of stock')
+                message.success('Thêm Thành Công')
+            else message.error('Tour đã hết Vé')
             queryClient.invalidateQueries(['cart'])
         },
     })
@@ -59,7 +48,10 @@ function Detail() {
         ghiChu: string
         lichTrinhChiTiet: string
         diemDen: Array<DiemDen>
-        khachSan: KhachSan
+        nameKhachSan: string
+        diaChiKhachSan: string
+        phoneKhachSan: string
+        giaPhongKhachSan: number
     }
 
     const handleAddToCart = (e: Event) => {
@@ -103,7 +95,17 @@ function Detail() {
                 ) : (
                     <>
                         <div className={cl('image-wrapper')}>
-                            {imageUrls.length > 0 && ( // Kiểm tra xem mảng có hình ảnh không
+                            <div className={cl('carousel-item')} >
+                                <Carousel
+                                    className={cl('carousel')} effect="fade" autoplay>
+                                    {/* {imageUrls.map((imageUrl: string, index: number) => ( */}
+                                    <div className={cl('carousel-item')} >
+                                        <img className={cl('image')} src={imageUrls} alt="Không tải được" />
+                                    </div>
+                                    {/* ))} */}
+                                </Carousel>
+                            </div>
+                            {/* {imageUrls.length > 0 && ( // Kiểm tra xem mảng có hình ảnh không
                                 <Carousel
                                     className={cl('carousel')} effect="fade" autoplay>
                                     {imageUrls.map((imageUrl: string, index: number) => (
@@ -112,7 +114,7 @@ function Detail() {
                                         </div>
                                     ))}
                                 </Carousel>
-                            )}
+                            )} */}
                             {/* </div> */}
                             {/* <Image
                                 className={cl('image')}
@@ -207,6 +209,30 @@ function Detail() {
                                     <div className={cl('textContent')}>
                                         <p>Chi Tiết: {lichTrinh.lichTrinhChiTiet}</p>
                                     </div>
+                                    <div className={cl('childOfContent')}>
+                                        <div className={cl('textHeaderChild')}>
+                                            <h3>Khách Sạn: {lichTrinh.nameKhachSan}</h3>
+                                        </div>
+                                        <div className={cl('textContent')}>
+                                            <h3>Giá tham khảo cho giường đơn: <> </>
+
+                                                {lichTrinh.giaPhongKhachSan.toLocaleString(
+                                                    'vi-VN',
+                                                    {
+                                                        style: 'currency',
+                                                        currency: 'VND',
+                                                        minimumFractionDigits: 0,
+                                                    }
+                                                )}/Đêm
+                                            </h3>
+                                        </div>
+                                        <div className={cl('textContent')}>
+                                            <h3>Địa Chỉ Khách Sạn: {lichTrinh.diaChiKhachSan}</h3>
+                                        </div>
+                                        <div className={cl('textContent')}>
+                                            <h3>Liên Hệ Khách Sạn: {lichTrinh.phoneKhachSan}</h3>
+                                        </div>
+                                    </div>
                                     {lichTrinh.diemDen.length > 0 &&
                                         lichTrinh.diemDen.map((diemDen: DiemDen, index: any) => (
                                             <div className={cl('childOfContent')}>
@@ -232,34 +258,39 @@ function Detail() {
                                                     <h3>Giới thiệu: {diemDen.noiDung}</h3>
                                                 </div>
                                             </div>
+
                                         ))}
 
-                                    {lichTrinh.khachSan != null &&
-                                        <div className={cl('childOfContent')}>
-                                            <div className={cl('textHeaderChild')}>
-                                                <h3>Khách Sạn: {lichTrinh.khachSan.name}</h3>
-                                            </div>
-                                            <div className={cl('textContent')}>
-                                                <h3>Giá tham khảo cho giường đơn: <> </>
+                                    {/* {lichTrinh.khachSan != null ?
+                                        (
+                                            <div className={cl('childOfContent')}>
+                                                <div className={cl('textHeaderChild')}>
+                                                    <h3>Khách Sạn: {lichTrinh.khachSan.name}</h3>
+                                                </div>
+                                                <div className={cl('textContent')}>
+                                                    <h3>Giá tham khảo cho giường đơn: <> </>
 
-                                                    {lichTrinh.khachSan.giaPhong.toLocaleString(
-                                                        'vi-VN',
-                                                        {
-                                                            style: 'currency',
-                                                            currency: 'VND',
-                                                            minimumFractionDigits: 0,
-                                                        }
-                                                    )}/Đêm
-                                                </h3>
+                                                        {lichTrinh.khachSan.giaPhong.toLocaleString(
+                                                            'vi-VN',
+                                                            {
+                                                                style: 'currency',
+                                                                currency: 'VND',
+                                                                minimumFractionDigits: 0,
+                                                            }
+                                                        )}/Đêm
+                                                    </h3>
+                                                </div>
+                                                <div className={cl('textContent')}>
+                                                    <h3>Địa Chỉ Khách Sạn: {lichTrinh.khachSan.diaChiKsan}</h3>
+                                                </div>
+                                                <div className={cl('textContent')}>
+                                                    <h3>Liên Hệ Khách Sạn: {lichTrinh.khachSan.phone}</h3>
+                                                </div>
                                             </div>
-                                            <div className={cl('textContent')}>
-                                                <h3>Địa Chỉ Khách Sạn: {lichTrinh.khachSan.diaChiKsan}</h3>
-                                            </div>
-                                            <div className={cl('textContent')}>
-                                                <h3>Liên Hệ Khách Sạn: {lichTrinh.khachSan.phone}</h3>
-                                            </div>
-                                        </div>
-                                    }
+                                        ) : (
+                                            <><h3>Lịch Trình Tour</h3></>
+                                        )
+                                    } */}
 
                                 </div>
                             </>
@@ -271,7 +302,11 @@ function Detail() {
                             //         {/* Thêm các thông tin khác về khách sạn */}
                             //     </div>
 
-                        ))}
+                        )
+                        )
+
+
+                        }
 
                     </div>
 

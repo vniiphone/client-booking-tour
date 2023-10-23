@@ -9,8 +9,8 @@ export default interface Tour {
     noiKhoiHanh: string
     visible : boolean
     loaiTour_id: number
-    imageUrls: Array<string>
-    imagePublicId: string
+    imageUrls:string
+    imagePublicIds: string
     loaiTour: {}
     lichTrinhTour: {}
 }
