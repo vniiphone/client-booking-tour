@@ -2,7 +2,7 @@ import React from 'react'
 import { message } from 'antd'
 import { useMutation } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
-import { createProduct } from './services'
+import { createTour } from './services'
 
 import Wrapper from '../../components/__atom/FormWrapper'
 import Form from './components/Form'
@@ -21,7 +21,7 @@ function CreateProduct() {
     //         }
     //     },
     // })
-    const createProductMutation = useMutation(createProduct, {
+    const createProductMutation = useMutation(createTour, {
         onSuccess: (data) => {
             // console.log('Mutation success. Data:');
             if (data.status === 201) {

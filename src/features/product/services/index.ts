@@ -16,7 +16,7 @@ interface Props {
     visible: true
 }
 
-export const createProduct = async (data: Partial<Props>) => {
+export const createTour = async (data: Partial<Props>) => {
     const res = await request.post(`/tour/create`, { ...data })
     // console.log("log create tourr: " + res.data.tour)
     return res
@@ -27,11 +27,17 @@ export const editTour = async (data: Partial<Props>) => {
     return res
 }
 
-export const deleteProduct = async ({ id }: Partial<Props>) => {
+export const deleteTour = async ({ id }: Partial<Props>) => {
     const res = await request.delete(`/tour/${id}`)
+    console.log("delete tour: " + res.data);
     return res
 }
 
+export const showTour = async ({ id }: Partial<Props>) => {
+    const res = await request.put(`/tour/setVisible/${id}`)
+    console.log("show tour: " + res.data);
+    return res
+}
 export const getPrerequisites = async () => {
     const res = Promise.all([
         

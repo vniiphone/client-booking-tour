@@ -19,7 +19,7 @@ export const editLichTrinhTour = async (data: Partial<Props>) => {
 }
 
 export const deleteLichTrinhTour = async ({ id }: Partial<Props>) => {
-    const res = await request.delete(`/ltt-tour/${id}`)
+    const res = await request.delete(`/lichtrinh-tour/${id}`)
     return res
 }
 

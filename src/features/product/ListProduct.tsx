@@ -8,7 +8,7 @@ import { Edit, Delete, Add } from '../../components/__atom/ActionIcon'
 
 import productPlaceholder from '../../assets/img/components/product_placeholder.png'
 
-import { deleteProduct } from './services'
+import { deleteTour, showTour } from './services'
 import { getTours } from '../../services'
 import Pagination from '../../components/__layout/Pagination'
 import { useState } from 'react'
@@ -32,12 +32,20 @@ function ListProduct() {
     const tourQuery = useQuery(['admin-products', page], () =>
         getTours({ page })
     )
-    const deleteProductMuatation = useMutation(deleteProduct, {
+
+    const deleteTourMuatation = useMutation(deleteTour, {
         onSuccess: (data) => {
-            console.log(data)
+            // console.log(data)
             tourQuery.refetch()
         },
     })
+    const showTourMutation = useMutation(showTour, {
+        onSuccess: (data) => {
+            // console.log(data)
+            tourQuery.refetch()
+        },
+    });
+
 
     const onFetchNewData = (page: number) => {
         setPage(page)
@@ -54,11 +62,12 @@ function ListProduct() {
             dataIndex: 'name',
             key: 'name',
         },
-        {
-            title: 'Mã Tour',
-            dataIndex: 'tourCode',
-            key: 'tourCode',
-        },
+        // {
+        //     title: 'Mã Tour',
+        //     dataIndex: 'tourCode',
+        //     key: 'tourCode',
+        // },
+
         {
             title: 'Giá Tham Khảo',
             dataIndex: 'giaThamKhao',
@@ -97,6 +106,22 @@ function ListProduct() {
             responsive: ['lg'],
         },
         {
+            title: 'Visible',
+            dataIndex: 'visible',
+            key: 'visible',
+            render: (text, record) => (
+                <span>
+                    <span>
+                        {text ? (
+                            <button onClick={() => deleteTourMuatation.mutate({ id: record.id })}>Đang Hiển Thị</button>
+                        ) : (
+                            <button onClick={() => showTourMutation.mutate({ id: record.id })}>Đang Ẩn</button>
+                        )}
+                    </span>
+                </span>
+            ),
+        },
+        {
             title: 'Action',
             dataIndex: undefined,
             key: 'action',
@@ -104,11 +129,11 @@ function ListProduct() {
                 <div className='d-flex flex-align-center gap-3'>
                     <Add to={`/admin/lichtrinhtour/list/${record.id}`}></Add>
                     <Edit to={`/admin/tour/${record.id}`}></Edit>
-                    <Delete
+                    {/* <Delete
                         onClick={() =>
                             deleteProductMuatation.mutate({ id: record.id })
                         }
-                    />
+                    /> */}
                 </div>
             ),
         },

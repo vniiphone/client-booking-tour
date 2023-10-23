@@ -92,16 +92,17 @@ function FormComp({ edit, handleSubmit }: Props) {
   // Bây giờ bạn có thể sử dụng tourid và lichtrinhid trong component của bạn
 
 
-  console.log("Lichtrinhtour ID: " + lichtrinh_id + " Tour ID: " + id)
+  console.log("Lichtrinhtour ID: " + lichtrinh_id)
+  console.log(" Tour ID: " + id)
   const lichTrinhTourQuery = useQuery(['lichTrinhTour'],
     () => getLichTrinhSingle({ lichtrinh_id }), {
     enabled: !!lichtrinh_id,
   })
   console.log("lichTrinhTour Query:", lichTrinhTourQuery.data);
 
-  const tourQuery = useQuery(['tour'],
-    () => getTourById({ id }))
-  console.log("Tour Query:", tourQuery.data);
+  // const tourQuery = useQuery(['tour'],
+  //   () => getTourById({ id }))
+  // console.log("Tour Query:", tourQuery.data);
 
   let soThuTuLT;
 
@@ -169,11 +170,11 @@ function FormComp({ edit, handleSubmit }: Props) {
             }}
           >
             <div className='form-group'>
-              {tourQuery.data !== undefined && tourQuery.isSuccess &&
+              {/* {tourQuery.data !== undefined && tourQuery.isSuccess &&
                 <label className='form-label' >
                   Thông tin Lịch Trình: {tourQuery.data.name}
                 </label>
-              }
+              } */}
               <label className='form-label' htmlFor='tenLichTrinh'>
                 Tên Lịch Trình
               </label>
@@ -238,7 +239,30 @@ function FormComp({ edit, handleSubmit }: Props) {
                 name='ghiChu'
               />
             </div>
-
+            <div className='form-group'>
+              <label className='form-label' htmlFor='phuongTien'>
+                Phương Tiện Di Chuyển
+              </label>
+              <Field
+                component={Input}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                size='large'
+                name='phuongTien'
+                id='phuongTien'
+                status={
+                  errors.phuongTien && touched.phuongTien
+                    ? 'error'
+                    : ''
+                }
+                value={values.phuongTien}
+              />
+              <ErrorMessage
+                component='div'
+                className='form-error'
+                name='phuongTien'
+              />
+            </div>
             <div className='form-group'>
               <label className='form-label' htmlFor='lichTrinhChiTiet'>
                 Lịch Trình Chi Tiết
